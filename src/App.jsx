@@ -64,17 +64,27 @@ export default function App() {
           {/* Section 3: Why Asmaa? */}
           <WhyAsmaa />
 
+          <div className="glowing-divider" />
+
           {/* Section 4: Services ("أقدر أساعدك في إيه؟") */}
           <Services />
+
+          <div className="glowing-divider" />
 
           {/* Section 5: "Day in the Life of Managing Your Page" Timeline */}
           <Timeline />
 
+          <div className="glowing-divider" />
+
           {/* Section 6: Why Work With Me */}
           <WhyWorkWithMe />
 
+          <div className="glowing-divider" />
+
           {/* Section 7: About - Sports + Tech Personality */}
           <AboutSportsTech />
+
+          <div className="glowing-divider" />
 
           {/* Section 8: Contact & Social CTA */}
           <Contact />

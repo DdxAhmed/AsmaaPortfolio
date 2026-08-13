@@ -26,6 +26,7 @@ export default {
       animation: {
         'marquee': 'marquee 25s linear infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 12s linear infinite',
         'float-slow': 'float 4s ease-in-out infinite',
         'shimmer': 'shimmer 2.5s infinite',
       },

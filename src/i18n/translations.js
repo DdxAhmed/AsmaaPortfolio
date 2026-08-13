@@ -17,18 +17,13 @@ export const translations = {
     heroCtaPrimary: 'تواصل معي الآن',
     heroCtaSecondary: 'شوفي الشغل',
 
-    // Hero Dashboard Mockup
-    dashTitle: 'لوحة التحكم والمودريشن المباشرة',
-    dashSubtitle: 'Meta Business Suite Mode • بث مباشر للتفاعلات',
-    dashStatComments: 'تعليقات جديدة',
-    dashStatMessages: 'رسائل الـ Inbox',
-    dashStatReports: 'بلاغات تمت معالجتها',
-    dashStatEngagement: 'تفاعلات نشطة',
-    dashActionsHeader: 'إجراءات اليوم المنجزة',
-    dashActionReplied: 'تم الرد',
-    dashActionDeleted: 'تم حذف وحظر السبام',
-    dashActionPrivate: 'تم الرد الخاص',
-    dashLiveFeedTitle: 'تحديثات حية الآن (Live Stream)',
+    // Animated Chat Bubbles (Hero)
+    chat1User: 'هل متاحين الرد على التعليقات؟',
+    chat1Reply: 'أهلاً بيكي! نعم متاحين في أي وقت',
+    chat2User: 'كم مدة ردودكم على الرسائل؟',
+    chat2Reply: 'مش بيفوتنا أي رسالة أبداً',
+    chat3User: 'عندكم جدولة للبوستات؟',
+    chat3Reply: 'أيوه، ننشر في وقت الذروة بالظبط',
 
     // Marquee
     marqueeItems: [
@@ -69,7 +64,7 @@ export const translations = {
     svc5Title: 'جدولة وتنظيم البوستات',
     svc5Desc: 'تنسيق ونشر المحتوى في أوقات الذروة والمواعيد الأكثر تفاعلاً.',
     svc6Title: 'التعامل مع التعليقات السلبية',
-    svc6Desc: 'أسلوب هادئ وجميل يحل المشكلة قبل ما تكبر ويحفظ سمحة براندك.',
+    svc6Desc: 'أسلوب هادئ وجميل يحل المشكلة قبل ما تكبر ويحفظ سمعة براندك.',
     svc7Title: 'بناء وإدارة المجتمع',
     svc7Desc: 'تحويل المتابعين العاديين إلى مجتمع وفيّ بيتفاعل بانتظام.',
     svc8Title: 'دعم نمو التفاعل',
@@ -107,7 +102,7 @@ export const translations = {
     w3Title: 'أجيد التعامل مع الجمهور',
     w3Desc: 'أسلوبي هادئ ومحترف في كل تفاعل، وأعرف أتصرف بحكمة في الأزمات.',
     w4Title: 'أهتم بالتفاصيل',
-    w4Desc: 'مافي تعليق أو رسالة بتفوتني، وكل صغيرة بتتلاحظ بتفريغ تام.',
+    w4Desc: 'مافي تعليق أو رسالة بتفوتني، وكل صغيرة بتتلاحظ بدقة تامة.',
 
     // About Sports & Tech Section
     aboutTitle: 'شخصية رياضية... بعقلية تقنية.',
@@ -147,20 +142,15 @@ export const translations = {
     heroHeadline: 'I manage your pages...\nand build your community.',
     heroSubheadline: 'Asmaa Shaheen — Monitoring comments & interactions, managing digital communities, engaging audiences, and maintaining a professional brand identity.',
     heroCtaPrimary: 'Get In Touch',
-    heroCtaSecondary: 'See Live Demo',
+    heroCtaSecondary: 'See Daily Workflow',
 
-    // Hero Dashboard Mockup
-    dashTitle: 'Live Moderation Control Center',
-    dashSubtitle: 'Meta Business Suite Mode • Real-time Stream',
-    dashStatComments: 'New Comments',
-    dashStatMessages: 'Inbox DMs',
-    dashStatReports: 'Resolved Reports',
-    dashStatEngagement: 'Active Engagement',
-    dashActionsHeader: "Today's Actions Completed",
-    dashActionReplied: 'Public Replied',
-    dashActionDeleted: 'Spam Removed',
-    dashActionPrivate: 'DM Replied',
-    dashLiveFeedTitle: 'Live Event Feed',
+    // Animated Chat Bubbles (Hero)
+    chat1User: 'Are you available to reply to comments?',
+    chat1Reply: 'Hi there! Yes, we are always available.',
+    chat2User: 'How fast do you reply to DMs?',
+    chat2Reply: 'We never miss a single message!',
+    chat3User: 'Do you offer post scheduling?',
+    chat3Reply: 'Yes! We publish precisely at peak hours.',
 
     // Marquee
     marqueeItems: [
@@ -239,7 +229,7 @@ export const translations = {
     w3Title: 'Great with People',
     w3Desc: 'Diplomatic, composed, and professional across all public and private interactions.',
     w4Title: 'Detail-Oriented',
-    w4Desc: 'No comment or direct message is missed; every nuance is carefully noted.',
+    w4Desc: 'No comment or direct message is missed; every detail is handled with precision.',
 
     // About Sports & Tech Section
     aboutTitle: 'Sports Personality... with a Tech Mindset.',

@@ -1,158 +1,28 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../App';
-import { MessageSquare, Mail, ShieldAlert, Flame, CheckCircle2, ShieldCheck, Send } from 'lucide-react';
-
-function DashboardMockup() {
-  const { t } = useLang();
-
-  // Auto-updating stats every 4s to simulate ongoing live moderation!
-  const [stats, setStats] = useState({
-    comments: 18,
-    messages: 7,
-    reports: 3,
-    engagement: 156
-  });
-
-  const [tickerIndex, setTickerIndex] = useState(0);
-
-  const tickerMessages = [
-    '+3 new comments reviewed in #general',
-    'Spam comment filtered & account blocked',
-    'Customer query answered in Inbox DM',
-    'Community guidelines verified for new post'
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        ...prev,
-        comments: prev.comments + Math.floor(Math.random() * 2) + 1,
-        engagement: prev.engagement + Math.floor(Math.random() * 3) + 1
-      }));
-      setTickerIndex(prev => (prev + 1) % tickerMessages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [tickerMessages.length]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      className="relative w-full"
-    >
-      <div className="glass-card rounded-3xl p-5 sm:p-6 glow-border relative overflow-hidden">
-        {/* Header Bar */}
-        <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
-          <div className="flex items-center gap-2.5">
-            <span className="live-pulse-dot" />
-            <div>
-              <h4 className="text-xs font-extrabold text-textPrimary uppercase tracking-wider">
-                {t('dashTitle')}
-              </h4>
-              <p className="text-[11px] text-textSecondary">{t('dashSubtitle')}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-            <div className="w-2.5 h-2.5 rounded-full bg-brandSuccess/70" />
-          </div>
-        </div>
-
-        {/* 4 Stat Box Cards */}
-        <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-electric/30 transition-all">
-            <div className="flex items-center gap-2 text-electric mb-1">
-              <MessageSquare className="w-4 h-4" />
-              <span className="text-[11px] text-textSecondary">{t('dashStatComments')}</span>
-            </div>
-            <div className="text-2xl font-extrabold text-textPrimary font-mono">
-              +{stats.comments}
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-accentPurple/30 transition-all">
-            <div className="flex items-center gap-2 text-accentPurple mb-1">
-              <Mail className="w-4 h-4" />
-              <span className="text-[11px] text-textSecondary">{t('dashStatMessages')}</span>
-            </div>
-            <div className="text-2xl font-extrabold text-textPrimary font-mono">
-              +{stats.messages}
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brandWarning/30 transition-all">
-            <div className="flex items-center gap-2 text-brandWarning mb-1">
-              <ShieldAlert className="w-4 h-4" />
-              <span className="text-[11px] text-textSecondary">{t('dashStatReports')}</span>
-            </div>
-            <div className="text-2xl font-extrabold text-textPrimary font-mono">
-              +{stats.reports}
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-highlightCyan/30 transition-all">
-            <div className="flex items-center gap-2 text-highlightCyan mb-1">
-              <Flame className="w-4 h-4" />
-              <span className="text-[11px] text-textSecondary">{t('dashStatEngagement')}</span>
-            </div>
-            <div className="text-2xl font-extrabold text-textPrimary font-mono">
-              {stats.engagement}
-            </div>
-          </div>
-        </div>
-
-        {/* Action Pills Row */}
-        <div className="p-3.5 rounded-2xl bg-darkBg/80 border border-white/[0.06] mb-4">
-          <span className="text-[10px] font-bold text-textSecondary uppercase tracking-wider block mb-2">
-            {t('dashActionsHeader')}
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brandSuccess/15 text-brandSuccess border border-brandSuccess/25 text-xs font-bold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              {t('dashActionReplied')} 12
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brandWarning/15 text-brandWarning border border-brandWarning/25 text-xs font-bold">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              {t('dashActionDeleted')} 2
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-electric/15 text-electric border border-electric/25 text-xs font-bold">
-              <Send className="w-3.5 h-3.5" />
-              {t('dashActionPrivate')} 8
-            </span>
-          </div>
-        </div>
-
-        {/* Dynamic Auto-Typing Live Feed */}
-        <div className="p-3 rounded-xl bg-electric/5 border border-electric/20 text-xs font-mono text-highlightCyan flex items-center gap-2">
-          <span className="live-pulse-dot shrink-0" />
-          <span className="truncate">{tickerMessages[tickerIndex]}</span>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+import ChatBubbles from './ChatBubbles';
 
 export default function Hero() {
   const { t } = useLang();
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 bg-dot-grid overflow-hidden">
-      {/* Background Ambient Glows */}
+      {/* Studio Lighting: Top Spotlight Beam Cone */}
+      <div className="hero-spotlight" />
+
+      {/* Ambient Radial Lights */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-electric/[0.08] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-accentPurple/[0.07] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-5 w-full relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline, Badge, Subtitle & CTAs */}
+          
+          {/* Text Content Column */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 text-right rtl:text-right ltr:text-left"
+            className="lg:col-span-6 text-right rtl:text-right ltr:text-left"
           >
             {/* Status Role Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-electric/10 border border-electric/25 mb-6">
@@ -188,10 +58,40 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column: Live Moderation Dashboard Workspace Visual */}
-          <div className="lg:col-span-5">
-            <DashboardMockup />
+          {/* Warm Human Visual Column: Avatar with 12s Rotating Ring Glow + Animated Chat Bubbles */}
+          <div className="lg:col-span-6 flex flex-col items-center">
+            
+            {/* Avatar Frame with 12s Rotating Glow Ring */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative w-48 h-48 sm:w-56 sm:h-56 mb-8 flex items-center justify-center"
+            >
+              {/* Outer 12s Rotating Light Ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-highlightCyan/40 animate-spin-slow p-2" />
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-electric/30 to-accentPurple/30 blur-xl opacity-70" />
+
+              {/* Avatar Container */}
+              {/* TODO: Place Asmaa's real photo here -> <img src="/path-to-photo.jpg" alt="Asmaa Shaheen" className="w-full h-full object-cover rounded-full" /> */}
+              <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-gradient-to-br from-slate-900 via-navyCard to-slate-800 border-2 border-white/20 shadow-2xl flex items-center justify-center overflow-hidden group">
+                
+                {/* Stylized Artistic Avatar Placeholder */}
+                <div className="flex flex-col items-center justify-center text-center p-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-electric to-accentPurple flex items-center justify-center text-2xl font-black text-white shadow-lg mb-2">
+                    AS
+                  </div>
+                  <span className="text-xs font-bold text-textPrimary">أسماء شاهين</span>
+                  <span className="text-[10px] text-highlightCyan">Moderator & CM</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Interactive Looping Social Media Chat Bubbles */}
+            <ChatBubbles />
+
           </div>
+
         </div>
       </div>
     </section>
