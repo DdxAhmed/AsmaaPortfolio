@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asmaa Shaheen | Social Media Moderator & Community Manager</title>
+  <meta name="description" content="Portfolio of Asmaa Shaheen - Professional Social Media Moderator, Community Manager, Sports Enthusiast, and IoT & Programming Learner.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/css/variables.css">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <link rel="stylesheet" href="./src/css/animations.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="brand-avatar">AS</div>
+        <span>Asmaa Shaheen</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#why-me" class="nav-link">Why Me</a>
+        <a href="#workflow" class="nav-link">Workflow</a>
+        <a href="#dashboard" class="nav-link">Dashboard</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#sports" class="nav-link">Sports Mindset</a>
+        <a href="#technology" class="nav-link">Technology</a>
+        <a href="#timeline" class="nav-link">Timeline</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary" data-open-modal="contact">Let's Connect</button>
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content reveal-left">
+        <div class="hero-badge">
+          <span class="pulse-dot pulse-dot-cyan"></span>
+          <span>Social Media Moderator & Community Manager</span>
+        </div>
+
+        <h1 class="hero-title">
+          More Than Moderation.<br>
+          <span>Building Better Communities.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          I'm <strong>Asmaa Shaheen</strong> — a passionate Social Media Moderator and Community Manager who understands people, communication, engagement, and digital communities.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag-pill">Social Media Moderation</span>
+          <span class="tag-pill">Community Management</span>
+          <span class="tag-pill">Audience Engagement</span>
+          <span class="tag-pill">Page Management</span>
+          <span class="tag-pill">Sports</span>
+          <span class="tag-pill">IoT & Technology</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#workflow" class="btn btn-primary">Explore My Skills</a>
+          <a href="#contact" class="btn btn-secondary" data-open-modal="contact">Let's Connect</a>
+        </div>
+      </div>
+
+      <!-- Right Visual: Interactive Moderation Dashboard Mockup -->
+      <div class="hero-dashboard-container reveal-right">
+        <div class="dashboard-card-mockup glow-card">
+          <div class="dash-header">
+            <div class="dash-title">
+              <span class="pulse-dot"></span>
+              Live Community Health Radar
+            </div>
+            <div class="dash-controls">
+              <button class="dash-btn-mini active">Realtime</button>
+              <button class="dash-btn-mini">Filter</button>
+            </div>
+          </div>
+
+          <div class="dash-metrics-grid">
+            <div class="metric-box">
+              <div class="metric-label">
+                <span>Community Health</span>
+                <span class="metric-change">↑ 99.4%</span>
+              </div>
+              <div class="metric-value">Optimal</div>
+            </div>
+
+            <div class="metric-box">
+              <div class="metric-label">
+                <span>Engagement Rate</span>
+                <span class="metric-change">↑ +14.2%</span>
+              </div>
+              <div class="metric-value" id="heroEngagementRate">94.7%</div>
+            </div>
+
+            <div class="metric-box">
+              <div class="metric-label">
+                <span>Comments Reviewed</span>
+                <span class="metric-change">Verified</span>
+              </div>
+              <div class="metric-value">12.8K</div>
+            </div>
+
+            <div class="metric-box">
+              <div class="metric-label">
+                <span>Response Efficiency</span>
+                <span class="metric-change">98.2%</span>
+              </div>
+              <div class="metric-value">&lt; 3m</div>
+            </div>
+          </div>
+
+          <div class="dash-live-feed">
+            <div class="live-feed-header">
+              <span>Active Moderation Activity Feed</span>
+              <span style="font-size: 0.7rem; color: var(--accent-cyan);">● Live Demo Stream</span>
+            </div>
+            <div id="heroLiveFeed">
+              <!-- Live Ticker Population -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ABOUT ME -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Meet Asmaa</h2>
+        <p class="section-description">
+          Understanding the people behind the page, fostering genuine connections, and maintaining vibrant digital spaces.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-bio reveal-left">
+          <p class="about-text">
+            Social media isn't just about publishing posts or clearing comment threads — it's about <strong>understanding human communication</strong>. I don't simply "manage a page"; I build and protect the atmosphere of the community.
+          </p>
+          <p class="about-text">
+            With a strong background in active moderation, athletic discipline, and a deep curiosity for modern technology, I approach every digital community with high responsibility, empathy, and quick decision-making under pressure.
+          </p>
+          <p class="about-text">
+            Whether resolving conflict in heated threads or encouraging positive interactions, my focus is always on creating healthy, brand-safe, and engaging spaces.
+          </p>
+        </div>
+
+        <div class="about-highlights-grid reveal-right">
+          <div class="highlight-card">
+            <div class="highlight-icon">💬</div>
+            <h3 class="highlight-title">Communication</h3>
+            <p class="highlight-desc">Empathetic listening and clear, tone-perfect brand communication.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">🛡️</div>
+            <h3 class="highlight-title">Responsibility</h3>
+            <p class="highlight-desc">Protecting page reputation and maintaining strict guidelines 24/7.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">⚡</div>
+            <h3 class="highlight-title">Quick Decision Making</h3>
+            <p class="highlight-desc">Evaluating intent rapidly and taking action before conflicts escalate.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">🤝</div>
+            <h3 class="highlight-title">Teamwork</h3>
+            <p class="highlight-desc">Seamless collaboration with content creators, managers, and users.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">🎯</div>
+            <h3 class="highlight-title">Problem Solving</h3>
+            <p class="highlight-desc">De-escalating difficult interactions with calm, solution-oriented logic.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">🔄</div>
+            <h3 class="highlight-title">Adaptability</h3>
+            <p class="highlight-desc">Swiftly adapting to platform updates, new tools, and community trends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY I'M DIFFERENT -->
+  <section class="section" id="why-me" style="background: rgba(13, 18, 34, 0.4);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Value Proposition</span>
+        <h2 class="section-title">Why I'm Different</h2>
+        <p class="section-description">
+          A proactive mindset built on strategy, active moderation, and digital community growth.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="feature-card reveal stagger-1">
+          <div class="feature-icon-wrapper">🌐</div>
+          <h3 class="feature-title">Community Management</h3>
+          <p class="feature-desc">Deeply understanding target audiences, nurturing discussions, and creating a welcoming digital environment where members feel valued.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-2">
+          <div class="feature-icon-wrapper">🧠</div>
+          <h3 class="feature-title">Smart Moderation</h3>
+          <p class="feature-desc">Monitoring conversation sentiment, filtering unwanted spam, and addressing inappropriate behaviors swiftly and professionally.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-3">
+          <div class="feature-icon-wrapper">💡</div>
+          <h3 class="feature-title">Audience Engagement</h3>
+          <p class="feature-desc">Spurring meaningful conversations, replying to feedback, and turning casual readers into loyal active community advocates.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-4">
+          <div class="feature-icon-wrapper">⚖️</div>
+          <h3 class="feature-title">Conflict Handling</h3>
+          <p class="feature-desc">Navigating negative feedback, disputes, and heated debates with a calm, neutral, and solution-focused approach.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-5">
+          <div class="feature-icon-wrapper">📊</div>
+          <h3 class="feature-title">Page Management</h3>
+          <p class="feature-desc">Comprehensive monitoring of incoming messages, comment moderation queues, report resolutions, and audience activity tracking.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-6">
+          <div class="feature-icon-wrapper">🚀</div>
+          <h3 class="feature-title">Continuous Learning</h3>
+          <p class="feature-desc">Constantly expanding technical horizons with IoT, programming logic, digital analytical tools, and platform updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MODERATION WORKFLOW -->
+  <section class="section" id="workflow">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Structured Execution</span>
+        <h2 class="section-title">Moderation, But Smarter.</h2>
+        <p class="section-description">
+          A 5-stage systematic workflow ensuring safety, engagement, and consistent community health.
+        </p>
+      </div>
+
+      <div class="workflow-container reveal">
+        <div class="workflow-stepper">
+          <button class="workflow-step-btn active" data-step="monitor">
+            <div class="step-number-node">01</div>
+            <div class="step-label-node">Monitor</div>
+          </button>
+
+          <button class="workflow-step-btn" data-step="understand">
+            <div class="step-number-node">02</div>
+            <div class="step-label-node">Understand</div>
+          </button>
+
+          <button class="workflow-step-btn" data-step="respond">
+            <div class="step-number-node">03</div>
+            <div class="step-label-node">Respond</div>
+          </button>
+
+          <button class="workflow-step-btn" data-step="resolve">
+            <div class="step-number-node">04</div>
+            <div class="step-label-node">Resolve</div>
+          </button>
+
+          <button class="workflow-step-btn" data-step="engage">
+            <div class="step-number-node">05</div>
+            <div class="step-label-node">Engage</div>
+          </button>
+        </div>
+
+        <div class="workflow-detail-display">
+          <div class="workflow-detail-content">
+            <div>
+              <h3 class="workflow-detail-title" id="wfDetailTitle">1. Monitor Community Activity</h3>
+              <p class="workflow-detail-desc" id="wfDetailDesc">
+                Continuous tracking of comments, messages, reports, and community activity to maintain safety and order.
+              </p>
+              <div class="workflow-key-bullets" id="wfDetailBullets">
+                <!-- Bullet list populated by JS -->
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">
+                Workflow Insight Console
+              </div>
+              <pre class="workflow-demo-box" id="wfDetailDemo">// Console Output</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MODERATOR DASHBOARD -->
+  <section class="section" id="dashboard" style="background: rgba(7, 10, 20, 0.8);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Interactive Control Center</span>
+        <h2 class="section-title">Inside the Community</h2>
+        <p class="section-description">
+          A simulated moderation control panel illustrating community metrics and real-time response actions.
+        </p>
+      </div>
+
+      <div class="full-dashboard reveal">
+        <div class="dash-top-bar">
+          <div>
+            <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 0.2rem;">Community Operations Dashboard</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Asmaa Shaheen • Active Moderator Mode</p>
+          </div>
+          <div class="dash-status-indicator">
+            <span class="pulse-dot"></span>
+            <span>Live System Operational</span>
+          </div>
+        </div>
+
+        <div class="dash-kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-label">Community Members</div>
+            <div class="kpi-number">12.8K</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Interactions Managed</div>
+            <div class="kpi-number" id="kpiInteractions">1,284</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Positive Engagement</div>
+            <div class="kpi-number">94.7%</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Response Efficiency</div>
+            <div class="kpi-number">98.2%</div>
+          </div>
+        </div>
+
+        <div class="dash-main-split">
+          <!-- Left: Overview & Progress Bars -->
+          <div class="dash-overview-panel">
+            <div class="panel-title">
+              <span>Moderation Overview</span>
+              <span style="font-size: 0.75rem; color: var(--accent-cyan);">Demo Distribution</span>
+            </div>
+
+            <div class="progress-group">
+              <div>
+                <div class="progress-item-label">
+                  <span>Approved Content</span>
+                  <span style="font-weight: 700; color: var(--accent-cyan);">92%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-approved" data-target-width="92%" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="progress-item-label">
+                  <span>Flagged Content</span>
+                  <span style="font-weight: 700; color: var(--accent-amber);">5%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-flagged" data-target-width="5%" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="progress-item-label">
+                  <span>Removed Content</span>
+                  <span style="font-weight: 700; color: var(--accent-rose);">3%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill fill-removed" data-target-width="3%" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Activity Stream -->
+          <div class="dash-activity-panel">
+            <div class="panel-title">
+              <span>Recent Activity Stream</span>
+              <span style="font-size: 0.75rem; color: var(--text-subtle);">Click to resolve</span>
+            </div>
+
+            <div class="activity-filter-bar">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="comments">Comments</button>
+              <button class="filter-btn" data-filter="reports">Reports</button>
+              <button class="filter-btn" data-filter="discussions">Discussions</button>
+            </div>
+
+            <div class="activity-list" id="dashActivityList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SOCIAL MEDIA SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Competencies</span>
+        <h2 class="section-title">Social Media Skills</h2>
+        <p class="section-description">
+          A structured matrix of moderation, management, communication, and digital proficiency.
+        </p>
+      </div>
+
+      <div class="skills-tabs reveal">
+        <button class="tab-btn active" data-category="all">All Skills</button>
+        <button class="tab-btn" data-category="community">Community Management</button>
+        <button class="tab-btn" data-category="social">Social Media</button>
+        <button class="tab-btn" data-category="communication">Communication</button>
+        <button class="tab-btn" data-category="digital">Digital & Tech Skills</button>
+      </div>
+
+      <div class="skills-matrix-grid">
+        <div class="skill-category-card reveal stagger-1" data-category="community">
+          <h3 class="skill-cat-title">
+            <span>🛡️</span> Community Management
+          </h3>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <span>Community Monitoring</span>
+              <span class="skill-tag-badge">Core</span>
+            </div>
+            <div class="skill-item">
+              <span>Audience Interaction</span>
+              <span class="skill-tag-badge">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span>Engagement Management</span>
+              <span class="skill-tag-badge">Active</span>
+            </div>
+            <div class="skill-item">
+              <span>Conflict Handling</span>
+              <span class="skill-tag-badge">Specialist</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category-card reveal stagger-2" data-category="social">
+          <h3 class="skill-cat-title">
+            <span>📱</span> Social Media
+          </h3>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <span>Page Management</span>
+              <span class="skill-tag-badge">Meta Suite</span>
+            </div>
+            <div class="skill-item">
+              <span>Comment Moderation</span>
+              <span class="skill-tag-badge">Realtime</span>
+            </div>
+            <div class="skill-item">
+              <span>Message Management</span>
+              <span class="skill-tag-badge">Fast Response</span>
+            </div>
+            <div class="skill-item">
+              <span>Content Monitoring</span>
+              <span class="skill-tag-badge">Brand Safety</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category-card reveal stagger-3" data-category="communication">
+          <h3 class="skill-cat-title">
+            <span>🗣️</span> Communication
+          </h3>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <span>Professional Voice</span>
+              <span class="skill-tag-badge">High</span>
+            </div>
+            <div class="skill-item">
+              <span>Active Listening</span>
+              <span class="skill-tag-badge">Essential</span>
+            </div>
+            <div class="skill-item">
+              <span>Problem Solving</span>
+              <span class="skill-tag-badge">Logic</span>
+            </div>
+            <div class="skill-item">
+              <span>Team Collaboration</span>
+              <span class="skill-tag-badge">Synergy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category-card reveal stagger-4" data-category="digital">
+          <h3 class="skill-cat-title">
+            <span>💻</span> Digital & Tech Skills
+          </h3>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <span>Platform Tools</span>
+              <span class="skill-tag-badge">Proficient</span>
+            </div>
+            <div class="skill-item">
+              <span>Basic Analytics</span>
+              <span class="skill-tag-badge">Data-informed</span>
+            </div>
+            <div class="skill-item">
+              <span>Programming Learner</span>
+              <span class="skill-tag-badge">Python / C</span>
+            </div>
+            <div class="skill-item">
+              <span>IoT Concepts</span>
+              <span class="skill-tag-badge">Connected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SPORTS SECTION -->
+  <section class="section" id="sports" style="background: rgba(13, 18, 34, 0.6);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Mindset & Character</span>
+        <h2 class="section-title">Sports Built My Mindset.</h2>
+        <p class="section-description">
+          Athletic training instills core principles that directly elevate digital moderation performance.
+        </p>
+      </div>
+
+      <div class="sports-cards-grid">
+        <div class="sports-card reveal stagger-1">
+          <div class="sports-icon-wrapper">🏃‍♀️</div>
+          <h3 class="sports-card-title">Discipline</h3>
+          <p class="sports-card-desc">Consistency, daily commitment, and maintaining high standards in routine moderation tasks.</p>
+        </div>
+
+        <div class="sports-card reveal stagger-2">
+          <div class="sports-icon-wrapper">⚽</div>
+          <h3 class="sports-card-title">Teamwork</h3>
+          <p class="sports-card-desc">Knowing how to collaborate seamlessly with different personalities and background backgrounds.</p>
+        </div>
+
+        <div class="sports-card reveal stagger-3">
+          <div class="sports-icon-wrapper">🏆</div>
+          <h3 class="sports-card-title">Leadership</h3>
+          <p class="sports-card-desc">Taking responsibility for outcomes and supporting teammates in high-demand environments.</p>
+        </div>
+
+        <div class="sports-card reveal stagger-4">
+          <div class="sports-icon-wrapper">⚡</div>
+          <h3 class="sports-card-title">Quick Decisions</h3>
+          <p class="sports-card-desc">Evaluating dynamic situations rapidly and making accurate split-second choices under pressure.</p>
+        </div>
+
+        <div class="sports-card reveal stagger-5">
+          <div class="sports-icon-wrapper">🔥</div>
+          <h3 class="sports-card-title">Competitive Mindset</h3>
+          <p class="sports-card-desc">Always striving for continuous self-improvement, efficiency, and professional excellence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TECHNOLOGY & IOT -->
+  <section class="section" id="technology">
+    <div class="container">
+      <div class="tech-container">
+        <div class="reveal-left">
+          <span class="section-tag">Technical Growth</span>
+          <h2 class="section-title">Curious About Technology</h2>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+            Beyond community management, I am constantly expanding my understanding of <strong>programming, IoT, and hardware connectivity</strong>.
+          </p>
+
+          <div class="hero-tags" style="margin-bottom: 1.5rem;">
+            <span class="tag-pill">Programming</span>
+            <span class="tag-pill">IoT</span>
+            <span class="tag-pill">Technology</span>
+            <span class="tag-pill">Problem Solving</span>
+          </div>
+
+          <div class="tech-positioning-box">
+            "I'm learning, building, experimenting, and continuously improving."
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="canvas-wrapper">
+            <canvas id="iotCanvas"></canvas>
+            <div class="canvas-overlay-text">
+              ● Interactive IoT Node Graph • Hover to influence nodes
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PERSONAL SKILL TIMELINE -->
+  <section class="section" id="timeline" style="background: rgba(7, 10, 20, 0.6);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Evolution</span>
+        <h2 class="section-title">Personal Skill Timeline</h2>
+        <p class="section-description">
+          How each stage of development laid the foundation for the next skill set.
+        </p>
+      </div>
+
+      <div class="timeline-track">
+        <div class="timeline-node-item left reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 01</div>
+            <h3 class="timeline-title">Sports Background</h3>
+            <p class="timeline-desc">Built focus, physical discipline, resilience under pressure, and teamwork foundations.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node-item right reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 02</div>
+            <h3 class="timeline-title">Communication Skills</h3>
+            <p class="timeline-desc">Developed strong verbal & written communication skills, empathetic listening, and conflict resolution.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node-item left reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 03</div>
+            <h3 class="timeline-title">Social Media Management</h3>
+            <p class="timeline-desc">Applied communication insights to digital platforms, post interactions, and brand voice representation.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node-item right reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 04</div>
+            <h3 class="timeline-title">Professional Moderation</h3>
+            <p class="timeline-desc">Specialized in active comment moderation, policy enforcement, crisis de-escalation, and community health.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node-item left reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 05</div>
+            <h3 class="timeline-title">Technology & Programming</h3>
+            <p class="timeline-desc">Explored logic, code structures, and basic programming fundamentals to think algorithmically.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node-item right reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-badge">Stage 06</div>
+            <h3 class="timeline-title">IoT Learning</h3>
+            <p class="timeline-desc">Investigating smart devices, microcontrollers, and connected systems to bridge human communities and technical innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PERSONALITY / VALUES -->
+  <section class="section" id="values">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Core Character</span>
+        <h2 class="section-title">What I Bring to a Team</h2>
+        <p class="section-description">
+          The values and attributes that drive my daily work and community management.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card reveal stagger-1">
+          <div class="value-icon">🛡️</div>
+          <h3 class="value-name">Reliable</h3>
+          <p class="value-desc">I take responsibility seriously and execute moderation duties with dependable consistency.</p>
+        </div>
+
+        <div class="value-card reveal stagger-2">
+          <div class="value-icon">✨</div>
+          <h3 class="value-name">Positive</h3>
+          <p class="value-desc">I believe healthy, thriving digital communities start with constructive, positive communication.</p>
+        </div>
+
+        <div class="value-card reveal stagger-3">
+          <div class="value-icon">🧩</div>
+          <h3 class="value-name">Adaptable</h3>
+          <p class="value-desc">I learn quickly and adapt smoothly to new guidelines, platforms, and team environments.</p>
+        </div>
+
+        <div class="value-card reveal stagger-4">
+          <div class="value-icon">🔍</div>
+          <h3 class="value-name">Curious</h3>
+          <p class="value-desc">I'm always exploring new technologies, tools, and digital engagement methodologies.</p>
+        </div>
+
+        <div class="value-card reveal stagger-5">
+          <div class="value-icon">🤝</div>
+          <h3 class="value-name">Team Player</h3>
+          <p class="value-desc">I enjoy collaborating, sharing insights, and learning alongside passionate team members.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CONTACT SECTION -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-banner reveal">
+        <h2 class="contact-headline">Let's Build Better Communities Together.</h2>
+        <p class="contact-text">
+          Have a page, community, or project that needs someone who understands people, communication, and digital engagement? Let's connect.
+        </p>
+
+        <div class="contact-buttons-group">
+          <button class="btn btn-primary" data-open-modal="contact">Contact Asmaa</button>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+
+        <div class="social-links-grid">
+          <div class="social-item">
+            <span>📷</span> Instagram
+          </div>
+          <div class="social-item">
+            <span>📘</span> Facebook
+          </div>
+          <div class="social-item">
+            <span>💼</span> LinkedIn
+          </div>
+          <div class="social-item">
+            <span>✉️</span> Email
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">Asmaa Shaheen</div>
+      <p>Social Media Moderator • Community Manager • Sports Enthusiast • IoT Learner</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-subtle);">
+        &copy; 2026 Asmaa Shaheen. Built with modern web tech. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" data-close-modal>&times;</button>
+      <h3 style="font-size: 1.5rem; color: #ffffff; margin-bottom: 0.5rem;">Connect with Asmaa</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Send a direct message regarding social media moderation, community management, or collaboration.
+      </p>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label class="form-label" for="senderName">Your Name</label>
+          <input type="text" id="senderName" class="form-input" placeholder="e.g. Sarah Connor" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="senderEmail">Email Address</label>
+          <input type="email" id="senderEmail" class="form-input" placeholder="e.g. sarah@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="messageContent">Message</label>
+          <textarea id="messageContent" class="form-input" placeholder="Tell Asmaa about your community or page needs..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <span style="font-size: 1.2rem; color: var(--accent-emerald);">✓</span>
+    <span class="toast-text">Message sent successfully!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
