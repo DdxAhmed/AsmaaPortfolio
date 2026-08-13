@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../App';
-import { Facebook, Instagram, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { Facebook, Instagram, MessageSquare, CheckCircle2 } from 'lucide-react';
 
 export default function ChatBubbles() {
   const { t } = useLang();
@@ -26,19 +26,19 @@ export default function ChatBubbles() {
     },
     {
       platform: 'client',
-      platformName: 'Page Owner',
-      platformIcon: MessageCircle,
+      platformName: 'Page Inbox',
+      platformIcon: MessageSquare,
       platformColor: 'bg-highlightCyan/15 text-highlightCyan border-highlightCyan/30',
       userMsg: t('chat3User'),
       replyMsg: t('chat3Reply')
     }
   ];
 
-  // Infinite cycle every 6s
+  // Cycle sequence smoothly every 6.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSet(prev => (prev + 1) % bubbleSets.length);
-    }, 6000);
+    }, 6500);
 
     return () => clearInterval(timer);
   }, [bubbleSets.length]);
@@ -56,11 +56,11 @@ export default function ChatBubbles() {
           exit={{ opacity: 0, transition: { duration: 0.3 } }}
           className="space-y-3"
         >
-          {/* User Question Bubble */}
+          {/* Client Question Bubble */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 22 }}
             className="flex items-start gap-2.5 rtl:flex-row-reverse ltr:flex-row"
           >
             <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 ${current.platformColor}`}>
@@ -82,7 +82,7 @@ export default function ChatBubbles() {
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 22, delay: 0.35 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 22, delay: 0.4 }}
             className="flex items-start gap-2.5 rtl:flex-row ltr:flex-row-reverse"
           >
             {/* Asmaa Avatar Badge */}
@@ -94,7 +94,7 @@ export default function ChatBubbles() {
               <div className="flex items-center justify-between gap-3 mb-1">
                 <span className="text-[11px] font-bold text-highlightCyan">أسماء شاهين</span>
                 <span className="inline-flex items-center gap-1 text-[10px] text-brandSuccess font-bold">
-                  <CheckCircle2 className="w-3 h-3" /> Sent
+                  <CheckCircle2 className="w-3 h-3" /> Replied
                 </span>
               </div>
               <p className="text-xs sm:text-sm font-bold text-textPrimary leading-relaxed">

@@ -12,7 +12,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      // Calculate scroll progress percentage
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
         setScrollProgress((window.scrollY / totalHeight) * 100);
@@ -27,7 +26,6 @@ export default function Navbar() {
     { label: t('navHome'), href: '#home' },
     { label: t('navAbout'), href: '#why-asmaa' },
     { label: t('navSkills'), href: '#services' },
-    { label: t('navTimeline'), href: '#timeline' },
     { label: t('navContact'), href: '#contact' },
   ];
 

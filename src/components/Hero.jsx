@@ -2,6 +2,10 @@ import { motion } from 'framer-motion';
 import { useLang } from '../App';
 import ChatBubbles from './ChatBubbles';
 
+// Profile Image path variable for easy substitution
+// TODO: Place Asmaa's real photo in public/images/asmaa-profile.webp
+const profileImage = "/images/asmaa-profile.webp";
+
 export default function Hero() {
   const { t } = useLang();
 
@@ -32,7 +36,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.6rem] font-black leading-[1.2] tracking-tight text-textPrimary mb-6 whitespace-pre-line">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.2] tracking-tight text-textPrimary mb-6 whitespace-pre-line">
               {t('heroHeadline')}
             </h1>
 
@@ -50,7 +54,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="#timeline"
+                href="#services"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/[0.04] border border-white/[0.12] hover:border-electric/40 text-textPrimary font-semibold text-sm sm:text-base rounded-full hover:bg-white/[0.08] transition-all duration-300"
               >
                 <span>{t('heroCtaSecondary')}</span>
@@ -58,32 +62,49 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Warm Human Visual Column: Avatar with 12s Rotating Ring Glow + Animated Chat Bubbles */}
+          {/* Warm Human Visual Column: Avatar with Orbiting Ring Glow + Animated Chat Bubbles */}
           <div className="lg:col-span-6 flex flex-col items-center">
             
-            {/* Avatar Frame with 12s Rotating Glow Ring */}
+            {/* Avatar Frame with Orbiting Dot Ring */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative w-48 h-48 sm:w-56 sm:h-56 mb-8 flex items-center justify-center"
             >
-              {/* Outer 12s Rotating Light Ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-highlightCyan/40 animate-spin-slow p-2" />
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-electric/30 to-accentPurple/30 blur-xl opacity-70" />
+              {/* Outer 12s Rotating Light Ring with Orbiting Light Dot */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-highlightCyan/40 animate-spin-slow p-2">
+                {/* Orbiting Dot */}
+                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-highlightCyan shadow-md shadow-highlightCyan" />
+              </div>
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-electric/25 to-accentPurple/25 blur-xl opacity-70" />
 
-              {/* Avatar Container */}
-              {/* TODO: Place Asmaa's real photo here -> <img src="/path-to-photo.jpg" alt="Asmaa Shaheen" className="w-full h-full object-cover rounded-full" /> */}
+              {/* Avatar Image Container with Fallback Illustration */}
+              {/* TODO: Place Asmaa's real photo in public/images/asmaa-profile.webp */}
               <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-gradient-to-br from-slate-900 via-navyCard to-slate-800 border-2 border-white/20 shadow-2xl flex items-center justify-center overflow-hidden group">
                 
-                {/* Stylized Artistic Avatar Placeholder */}
-                <div className="flex flex-col items-center justify-center text-center p-4">
+                {/* Image tag with onError fallback */}
+                <img
+                  src={profileImage}
+                  alt="Asmaa Shaheen Profile"
+                  className="w-full h-full object-cover rounded-full"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    if (e.currentTarget.nextElementSibling) {
+                      e.currentTarget.nextElementSibling.classList.remove('hidden');
+                    }
+                  }}
+                />
+
+                {/* Stylized Artistic Avatar Fallback Placeholder */}
+                <div className="hidden flex flex-col items-center justify-center text-center p-4">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-electric to-accentPurple flex items-center justify-center text-2xl font-black text-white shadow-lg mb-2">
                     AS
                   </div>
                   <span className="text-xs font-bold text-textPrimary">أسماء شاهين</span>
                   <span className="text-[10px] text-highlightCyan">Moderator & CM</span>
                 </div>
+
               </div>
             </motion.div>
 

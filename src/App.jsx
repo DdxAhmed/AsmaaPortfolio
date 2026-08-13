@@ -7,7 +7,6 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import WhyAsmaa from './components/WhyAsmaa';
 import Services from './components/Services';
-import Timeline from './components/Timeline';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
 import AboutSportsTech from './components/AboutSportsTech';
 import Contact from './components/Contact';
@@ -43,7 +42,7 @@ export default function App() {
 
   return (
     <LangContext.Provider value={{ lang, isRTL, t, toggleLang }}>
-      {/* 1. Preloader */}
+      {/* 1. Luxurious Preloader (Social Signal Loading 1.5s) */}
       {loading && <Preloader onFinish={() => setLoading(false)} />}
 
       {/* 2. Mouse Cursor Glow Spotlight */}
@@ -71,22 +70,17 @@ export default function App() {
 
           <div className="glowing-divider" />
 
-          {/* Section 5: "Day in the Life of Managing Your Page" Timeline */}
-          <Timeline />
-
-          <div className="glowing-divider" />
-
-          {/* Section 6: Why Work With Me */}
+          {/* Section 5: Why Work With Me */}
           <WhyWorkWithMe />
 
           <div className="glowing-divider" />
 
-          {/* Section 7: About - Sports + Tech Personality */}
+          {/* Section 6: About - Sports + Tech Personality */}
           <AboutSportsTech />
 
           <div className="glowing-divider" />
 
-          {/* Section 8: Contact & Social CTA */}
+          {/* Section 7: Contact & Social CTA */}
           <Contact />
         </main>
 

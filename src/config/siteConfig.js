@@ -24,7 +24,7 @@ export const siteConfig = {
   email: 'asmaa.shaheen@example.com',
   socials: {
     whatsapp: 'https://wa.me/201010757158',
-    facebook: 'https://facebook.com/asmaa.shaheen.moderator',
+    facebook: 'https://facebook.com/',
     instagram: 'https://instagram.com/asmaa.shaheen.cm',
     linkedin: 'https://linkedin.com/in/asmaa-shaheen'
   }
