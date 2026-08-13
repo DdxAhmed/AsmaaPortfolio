@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scroll */
+/* Smooth scrolling and base resets */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -10,72 +10,96 @@ html {
 }
 
 body {
+  background-color: #050810;
+  color: #F1F5F9;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #070b14;
+  background: #050810;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #162038;
-  border-radius: 3px;
+  background: #1e293b;
+  border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #0066ff;
+  background: #3B82F6;
 }
 
-/* Subtle grid background */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
+/* Dot Grid Background Pattern */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Glow border util */
-.glow-border {
-  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.15), 0 0 20px rgba(0, 102, 255, 0.08);
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glow-border-hover:hover {
-  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.35), 0 0 30px rgba(0, 102, 255, 0.2);
+.glass-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15), 0 0 25px rgba(124, 92, 252, 0.1);
 }
 
-/* Preloader styles */
-.preloader-letter {
-  display: inline-block;
-  opacity: 0;
-  animation: letterIn 0.5s forwards;
+/* Glow Border & Shimmer Button */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes letterIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: shimmer 4s infinite;
 }
 
-/* WhatsApp pulse */
-@keyframes whatsappPulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+/* Pulsing Green Live Dot */
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 10px #10B981;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.whatsapp-pulse {
-  animation: whatsappPulse 2.5s infinite;
-}
-
-/* Dashboard mockup animations */
-@keyframes slideInFeed {
-  0% { opacity: 0; transform: translateX(20px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-
-
-.feed-item-animate {
-  animation: slideInFeed 0.4s ease-out forwards;
+/* Cursor Glow Spotlight */
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  margin-top: -250px;
+  margin-left: -250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(124, 92, 252, 0.05) 45%, transparent 70%);
+  z-index: 9999;
+  transition: transform 0.08s ease-out;
 }

@@ -1,154 +1,195 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../App';
+import { MessageSquare, Mail, ShieldAlert, Flame, CheckCircle2, ShieldCheck, Send } from 'lucide-react';
 
-// Moderation workspace visual mockup
 function DashboardMockup() {
   const { t } = useLang();
 
-  const feedItems = [
-    { icon: '💬', label: t('dashComments'), count: 24, color: 'text-cyan-accent' },
-    { icon: '✉️', label: t('dashMessages'), count: 8, color: 'text-blue-400' },
-    { icon: '⚠️', label: t('dashReports'), count: 2, color: 'text-amber-400' },
-    { icon: '🔥', label: t('dashActive'), count: 156, color: 'text-emerald-400' },
+  // Auto-updating stats every 4s to simulate ongoing live moderation!
+  const [stats, setStats] = useState({
+    comments: 18,
+    messages: 7,
+    reports: 3,
+    engagement: 156
+  });
+
+  const [tickerIndex, setTickerIndex] = useState(0);
+
+  const tickerMessages = [
+    '+3 new comments reviewed in #general',
+    'Spam comment filtered & account blocked',
+    'Customer query answered in Inbox DM',
+    'Community guidelines verified for new post'
   ];
 
-  const actions = [
-    { label: t('dashApproved'), count: 18, color: 'bg-emerald-500/15 text-emerald-400' },
-    { label: t('dashFlagged'), count: 3, color: 'bg-amber-500/15 text-amber-400' },
-    { label: t('dashReplied'), count: 12, color: 'bg-blue-500/15 text-blue-400' },
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats(prev => ({
+        ...prev,
+        comments: prev.comments + Math.floor(Math.random() * 2) + 1,
+        engagement: prev.engagement + Math.floor(Math.random() * 3) + 1
+      }));
+      setTickerIndex(prev => (prev + 1) % tickerMessages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [tickerMessages.length]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
-      className="relative"
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="relative w-full"
     >
-      <div className="bg-navy-900/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 shadow-2xl shadow-black/40 glow-border">
-        {/* Header bar */}
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Moderation Panel
+      <div className="glass-card rounded-3xl p-5 sm:p-6 glow-border relative overflow-hidden">
+        {/* Header Bar */}
+        <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-2.5">
+            <span className="live-pulse-dot" />
+            <div>
+              <h4 className="text-xs font-extrabold text-textPrimary uppercase tracking-wider">
+                {t('dashTitle')}
+              </h4>
+              <p className="text-[11px] text-textSecondary">{t('dashSubtitle')}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-brandSuccess/70" />
+          </div>
+        </div>
+
+        {/* 4 Stat Box Cards */}
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-electric/30 transition-all">
+            <div className="flex items-center gap-2 text-electric mb-1">
+              <MessageSquare className="w-4 h-4" />
+              <span className="text-[11px] text-textSecondary">{t('dashStatComments')}</span>
+            </div>
+            <div className="text-2xl font-extrabold text-textPrimary font-mono">
+              +{stats.comments}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-accentPurple/30 transition-all">
+            <div className="flex items-center gap-2 text-accentPurple mb-1">
+              <Mail className="w-4 h-4" />
+              <span className="text-[11px] text-textSecondary">{t('dashStatMessages')}</span>
+            </div>
+            <div className="text-2xl font-extrabold text-textPrimary font-mono">
+              +{stats.messages}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brandWarning/30 transition-all">
+            <div className="flex items-center gap-2 text-brandWarning mb-1">
+              <ShieldAlert className="w-4 h-4" />
+              <span className="text-[11px] text-textSecondary">{t('dashStatReports')}</span>
+            </div>
+            <div className="text-2xl font-extrabold text-textPrimary font-mono">
+              +{stats.reports}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-highlightCyan/30 transition-all">
+            <div className="flex items-center gap-2 text-highlightCyan mb-1">
+              <Flame className="w-4 h-4" />
+              <span className="text-[11px] text-textSecondary">{t('dashStatEngagement')}</span>
+            </div>
+            <div className="text-2xl font-extrabold text-textPrimary font-mono">
+              {stats.engagement}
+            </div>
+          </div>
+        </div>
+
+        {/* Action Pills Row */}
+        <div className="p-3.5 rounded-2xl bg-darkBg/80 border border-white/[0.06] mb-4">
+          <span className="text-[10px] font-bold text-textSecondary uppercase tracking-wider block mb-2">
+            {t('dashActionsHeader')}
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brandSuccess/15 text-brandSuccess border border-brandSuccess/25 text-xs font-bold">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              {t('dashActionReplied')} 12
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brandWarning/15 text-brandWarning border border-brandWarning/25 text-xs font-bold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              {t('dashActionDeleted')} 2
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-electric/15 text-electric border border-electric/25 text-xs font-bold">
+              <Send className="w-3.5 h-3.5" />
+              {t('dashActionPrivate')} 8
             </span>
           </div>
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-          </div>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          {feedItems.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 + i * 0.1 }}
-              className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3 hover:bg-white/[0.06] hover:border-cyan-accent/20 transition-all duration-300 cursor-default"
-            >
-              <div className="text-lg mb-1">{item.icon}</div>
-              <div className={`text-xl font-bold ${item.color}`}>{item.count}</div>
-              <div className="text-[11px] text-slate-500 mt-0.5">{item.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Actions bar */}
-        <div className="bg-navy-950/60 rounded-xl p-3 border border-white/[0.04]">
-          <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2.5">
-            {t('dashActions')}
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            {actions.map((a, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 + i * 0.15 }}
-                className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-md ${a.color}`}
-              >
-                <span>{a.label}</span>
-                <span className="font-bold">{a.count}</span>
-              </motion.span>
-            ))}
-          </div>
+        {/* Dynamic Auto-Typing Live Feed */}
+        <div className="p-3 rounded-xl bg-electric/5 border border-electric/20 text-xs font-mono text-highlightCyan flex items-center gap-2">
+          <span className="live-pulse-dot shrink-0" />
+          <span className="truncate">{tickerMessages[tickerIndex]}</span>
         </div>
       </div>
-
-      {/* Floating notification card */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.4, duration: 0.5 }}
-        className="absolute -bottom-4 -left-4 rtl:-left-auto rtl:-right-4 bg-navy-800/90 backdrop-blur border border-cyan-accent/20 rounded-lg px-3 py-2 shadow-lg"
-      >
-        <div className="flex items-center gap-2 text-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse" />
-          <span className="text-slate-300 font-medium">+3 new comments</span>
-        </div>
-      </motion.div>
     </motion.div>
   );
 }
 
 export default function Hero() {
-  const { t, isRTL } = useLang();
+  const { t } = useLang();
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-grid overflow-hidden">
-      {/* Background ambient glows */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-electric/[0.07] rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-accent/[0.05] rounded-full blur-[100px] pointer-events-none" />
+    <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 bg-dot-grid overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-electric/[0.08] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-accentPurple/[0.07] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-5 py-16 md:py-24 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* Text side */}
+      <div className="max-w-6xl mx-auto px-5 w-full relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Headline, Badge, Subtitle & CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 text-right rtl:text-right ltr:text-left"
           >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-electric/10 border border-electric/25 rounded-full mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse" />
-              <span className="text-xs font-semibold text-cyan-accent tracking-wide">{t('heroRole')}</span>
+            {/* Status Role Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-electric/10 border border-electric/25 mb-6">
+              <span className="live-pulse-dot" />
+              <span className="text-xs font-bold text-highlightCyan tracking-wide">
+                {t('heroBadge')} • {t('heroAvailable')}
+              </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.15] tracking-tight mb-5 whitespace-pre-line">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.6rem] font-black leading-[1.2] tracking-tight text-textPrimary mb-6 whitespace-pre-line">
               {t('heroHeadline')}
             </h1>
 
-            <p className="text-base text-slate-400 leading-relaxed mb-3 max-w-lg">
-              <span className="text-white font-semibold">{t('heroName')}</span> — {t('heroRole')}
+            <p className="text-base sm:text-lg text-textSecondary leading-relaxed mb-8 max-w-xl">
+              {t('heroSubheadline')}
             </p>
 
-            <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-8 max-w-lg">
-              {t('heroDesc')}
-            </p>
-
-            <div className="flex flex-wrap gap-3">
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-electric to-blue-600 text-white font-semibold text-sm rounded-full shadow-lg shadow-electric/30 hover:shadow-electric/50 hover:-translate-y-0.5 transition-all duration-300"
+                className="btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-electric hover:bg-blue-600 text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-electric/30 hover:shadow-electric/50 transition-all duration-300 transform hover:-translate-y-1"
               >
-                {t('heroCta1')}
+                <span>{t('heroCtaPrimary')}</span>
               </a>
+
               <a
-                href="#why-asmaa"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:border-electric/40 font-semibold text-sm rounded-full transition-all duration-300"
+                href="#timeline"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/[0.04] border border-white/[0.12] hover:border-electric/40 text-textPrimary font-semibold text-sm sm:text-base rounded-full hover:bg-white/[0.08] transition-all duration-300"
               >
-                {t('heroCta2')}
+                <span>{t('heroCtaSecondary')}</span>
               </a>
             </div>
           </motion.div>
 
-          {/* Dashboard visual */}
-          <div className={`${isRTL ? 'lg:pr-4' : 'lg:pl-4'}`}>
+          {/* Right Column: Live Moderation Dashboard Workspace Visual */}
+          <div className="lg:col-span-5">
             <DashboardMockup />
           </div>
         </div>
